@@ -251,7 +251,7 @@
                             <input type="date" class="form-control" id="datePicker">
                         </div>
 						<div class="col-md-4">
-                            <label class="form-label fw-bold">Jumlah Sekoci Kapal <br><small class="text-muted fw-normal"><i>Ship's Lifeboat</i></small></label>
+                            <label class="form-label fw-bold">Jumlah Sekoci Kapal <br><small class="text-muted fw-normal"><i>Ship's Lifeboat/Lifeguard</i></small></label>
                             <input type="text" class="form-control" id="Ship's Lifeboat" placeholder="">
                         </div>
 						<div class="col-md-4">
@@ -261,17 +261,12 @@
 						<div class="col-md-4">
                             <label class="form-label fw-bold">Tanggal Tiba <br><small class="text-muted fw-normal"><i>Arrival Time</i></small></label>
                             <input type="date" class="form-control" id="datePicker"> 
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label fw-bold">Nama Pemeriksa <br><small class="text-muted fw-normal"><i>Quarantine Officer</i></small></label>
-                            <input type="text" class="form-control" id="inspector" required>
-                        </div>
-                        <div class="col-md-4">
+                        </div>                        
+                        <div class="col-md-6">
                             <label class="form-label fw-bold">Pelabuhan Terakhir <br><small class="text-muted fw-normal"><i>Last Port of Call</i></small></label>
                             <input type="text" class="form-control" id="lastPort" placeholder="Contoh: Belawan">
-                        </div>          
-                        
-						<div class="col-md-4">
+                        </div>
+						<div class="col-md-6">
 							<label class="form-label fw-bold">Penilaian Risiko<br><small class="text-muted fw-normal"><i>Risk Assessment:</i></small></label>
 							<select class="form-select font-weight-bold" id="riskAssessment" onchange="warnaRisk()">
 								<option value="">-- Select Risk --</option>
@@ -280,8 +275,11 @@
 								<option value="High Risk">High Risk (Risiko Tinggi)</option>
 							</select>
 						</div>
-						
-						<div class="col-md-3">
+						<div class="col-md-6">
+                            <label class="form-label fw-bold">Nama Pemeriksa <br><small class="text-muted fw-normal"><i>Quarantine Officer</i></small></label>
+                            <input type="text" class="form-control" id="inspector" required>
+                        </div>
+						<div class="col-md-6">
 							<label class="form-label fw-bold">Wilayah Kerja:<br><small class="text-muted fw-normal"><i>Working Area:</i></small></label>
 							<select class="form-select font-weight-bold" id="wilayahKerja">
 								<option value="">-- Pilih Wilayah Kerja --</option>
@@ -364,8 +362,8 @@
                 <thead class="table-light text-center">
                     <tr>
                         <th width="35%">Item Obat / Medicine Item</th>
-                        <th width="10%">Stok / Stock</th>
-                        <th width="18%">Exp. Date</th>
+                        <th width="12%">Stok / Stock</th>
+                        <th width="16%">Exp. Date</th>
                         <th width="15%">Status</th>
                         <th width="22%">Catatan / Remarks</th>
                     </tr>
@@ -374,35 +372,130 @@
                     <tr class="table-secondary"><td colspan="5"><b>1. Saluran Pencernaan (Gastrointestinal)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Antasida (Magnesium Trisilicate / Al. Hydroxide)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Anti-muntah (Metoclopramide / Cyclizine)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Anti-diare (Loperamide)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Laksatif (Bisacodyl / Senna)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Oral Rehydration Salts (ORS)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
@@ -411,28 +504,104 @@
                     <tr class="table-secondary"><td colspan="5"><b>2. Analgesik & Sedatif (Nyeri & Penenang)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Nyeri Ringan (Paracetamol / Aspirin)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Nyeri Sedang/Berat (Tramadol / Codeine)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Nyeri Sangat Berat (Morphine Sulphate)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Penenang (Diazepam)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
@@ -441,35 +610,130 @@
                     <tr class="table-secondary"><td colspan="5"><b>3. Anti-Infeksi (Antibiotik & Antijamur)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Kulit/Luka (Amoxicillin + Clavulanate)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Tenggorokan/Dada (Azithromycin / Erythromycin)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Saluran Kemih (Ciprofloxacin / Trimethoprim)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Infeksi Parah (Ceftriaxone Inj.)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Antijamur (Miconazole / Clotrimazole)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
@@ -478,21 +742,78 @@
                     <tr class="table-secondary"><td colspan="5"><b>4. Sistem Pernapasan & Alergi</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Asma (Salbutamol & Prednisolone)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Alergi Ringan (Cetirizine / Loratadine)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Alergi Berat/Syok (Adrenaline & Hydrocortisone)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
@@ -501,21 +822,78 @@
                     <tr class="table-secondary"><td colspan="5"><b>5. Obat Luar (Mata, Telinga, & Kulit)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Mata (Chloramphenicol / Amethocaine)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Telinga (Tetes Antibiotik/Steroid)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Kulit (Silver Sulfadiazine / Povidone Iodine)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
@@ -524,28 +902,104 @@
                     <tr class="table-secondary"><td colspan="5"><b>6. Obat Khusus & Tambahan</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Jantung (Glyceryl Trinitrate)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Pendarahan (Phytomenadione / Vit K)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Obat Malaria (Artemether + Lumefantrine)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Lokal Anestesi (Lidocaine)</td>
-                        <td><input type="number" class="form-control form-control-sm stock-input" placeholder="0"></td>
+                        <td style="min-width: 220px;"> <!-- Tambahan min-width agar kolom tabel lebih lebar -->
+							<div class="input-group"> <!-- Dihilangkan 'input-group-sm' agar ukurannya lebih lega -->								
+								<!-- Kotak Input Jumlah -->
+								<input type="number" class="form-control text-center" placeholder="Jumlah" min="0">								
+								<!-- Dropdown Pilihan Satuan -->
+								<!-- max-width diganti menjadi min-width agar tulisan satuan tidak terpotong -->
+								<select class="form-select" style="min-width: 110px; cursor: pointer;">
+									<option value="Btl" selected>Botol</option>
+									<option value="Tablet">Tablet</option>
+									<option value="Strip">Strip</option>
+									<option value="Box">Box</option>
+									<option value="Syrup">Syrup</option>
+									<option value="Pcs">Pcs</option>
+									<option value="Zalf">Zalf</option>
+									<option value="Tube">Tube</option>
+									<option value="Ampul">Ampul</option>
+									<option value="Vial">Vial</option>
+								</select>
+							</div>
+						</td>
                         <td><input type="date" class="form-control form-control-sm ed-input" onchange="cekKadaluarsa(this)"></td>
                         <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK</option><option value="NO">NO</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
@@ -566,85 +1020,85 @@
                     <tr class="table-secondary"><td colspan="3"><b>1. Alat Diagnostik (Diagnostic Equipment)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Tensimeter & Stetoskop<br><small class="text-muted"><i>Sphygmomanometer & Stethoscope</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Termometer Digital<br><small class="text-muted"><i>Digital Thermometer</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Oksimeter Nadi<br><small class="text-muted"><i>Pulse Oximeter</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Senter Medis<br><small class="text-muted"><i>Penlight</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
 
                     <tr class="table-secondary"><td colspan="3"><b>2. Resusitasi & Bantuan Napas (Resuscitation & Life Support)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Tabung Oksigen & Masker (Min. 200L)<br><small class="text-muted"><i>Oxygen Cylinder & Mask</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Ambu Bag / Resuscitator Manual<br><small class="text-muted"><i>Manual Resuscitator (Ambu Bag)</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Jalan Napas Buatan (Guedel / Oropharyngeal)<br><small class="text-muted"><i>Oropharyngeal Airways</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
 
                     <tr class="table-secondary"><td colspan="3"><b>3. Peralatan Bedah & Perawatan Luka (Surgical & Wound Care)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Set Jahit Luka Steril<br><small class="text-muted"><i>Sterile Suturing Kit</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Pisau Bedah & Gunting Medis<br><small class="text-muted"><i>Scalpel & Surgical Scissors</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Pinset Anatomi & Chirurgis<br><small class="text-muted"><i>Anatomical & Surgical Forceps</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
 
                     <tr class="table-secondary"><td colspan="3"><b>4. Evakuasi & Immobilisasi (Evacuation & Immobilization)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Tandu Kaku / Tandu Lipat<br><small class="text-muted"><i>Rigid / Folding Stretcher</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Bidai Berbagai Ukuran<br><small class="text-muted"><i>Splints (Various Sizes)</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Penyangga Leher<br><small class="text-muted"><i>Cervical Collar</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
 
                     <tr class="table-secondary"><td colspan="3"><b>5. Alat Suntik & Infus (Injection & IV Supplies)</b></td></tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Alat Suntik & Jarum Sekali Pakai<br><small class="text-muted"><i>Disposable Syringes & Needles</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                     <tr onchange="updateRowColor(this)">
                         <td>Set Infus & Kanula IV<br><small class="text-muted"><i>IV Giving Set & Cannula</i></small></td>
-                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">OK / Berfungsi</option><option value="NO">NO / Rusak/Hilang</option></select></td>
+                        <td><select class="form-select form-select-sm status-input"><option value="">-</option><option value="OK">Ada</option><option value="NO">Tidak Ada</option></select></td>
                         <td><input type="text" class="form-control form-control-sm note-input"></td>
                     </tr>
                 </tbody>
@@ -699,16 +1153,87 @@
                         <textarea class="form-control mt-3" id="finalRemarks" rows="3" placeholder="Tuliskan catatan/rekomendasi (Write remarks/recommendations here)..."></textarea>
                     </div>
 
-                    <div class="row text-center mt-4">
-                        <div class="col-6 border-end">
-                            <p class="mb-5">Mengetahui / <span class="text-muted"><i>Acknowledged by,</i></span><br><b>Nakhoda / Master</b></p>
-                            <input type="text" class="form-control text-center fw-bold" id="signerCaptain" placeholder="(Nama & Stempel / Name & Stamp)" style="border: none; border-bottom: 2px solid black; background: transparent;">
-                        </div>
-                        <div class="col-6">
-                            <p class="mb-5">Pemeriksa / <span class="text-muted"><i>Inspected by,</i></span><br><b>Petugas Karantina / Port Health Officer</b></p>
-                            <input type="text" class="form-control text-center fw-bold" id="signerOfficer" placeholder="(Nama & Stempel / Name & Stamp)" style="border: none; border-bottom: 2px solid black; background: transparent;">
-                        </div>
-                    </div>
+                    <!-- ========================================== -->
+					<!-- BAGIAN TANDA TANGAN (ATASAN DI TENGAH BAWAH) -->
+					<!-- ========================================== -->
+					<style>
+						/* Gaya untuk kolom input nama & NIP agar menyatu dengan latar */
+						.input-ttd {
+							border: none;
+							border-bottom: 1px solid #000; /* Garis bawah tanda tangan */
+							background: transparent;
+							text-align: center;
+							font-weight: bold;
+							width: 80%;
+							max-width: 250px;
+							outline: none;
+							padding: 2px;
+							font-size: 1em;
+						}
+						.input-nip {
+							border: none;
+							border-bottom: 1px dotted #000; /* Garis titik-titik untuk NIP */
+							background: transparent;
+							width: 160px;
+							outline: none;
+							font-size: 0.95em;
+						}
+						.input-tanggal {
+							border: none;
+							border-bottom: 1px dotted #000;
+							background: transparent;
+							width: 140px;
+							outline: none;
+							text-align: center;
+						}
+						
+						/* Sembunyikan teks petunjuk (placeholder) saat kertas dicetak ke PDF/Printer */
+						@media print {
+							.input-ttd::placeholder, .input-nip::placeholder, .input-tanggal::placeholder {
+								color: transparent; 
+							}
+						}
+					</style>
+
+					<div class="signature-section" style="page-break-inside: avoid;">
+						
+						<!-- Baris Atas: Kapten (Kiri) dan Petugas (Kanan) -->
+						<div class="row text-center mt-5 pt-4">
+							<div class="col-md-6 col-6">
+								<p class="mb-0">Mengetahui / <i>Acknowledged by</i>,</p>
+								<p class="fw-bold">Nakhoda Kapal / <i>Master of the Vessel</i></p>
+								<br><br><br><br>
+								<!-- Input Nama Kapten -->
+								<input type="text" class="input-ttd" placeholder="( Ketik Nama Nakhoda )">
+								<p class="mt-1">Stempel Kapal / <i>Ship's Stamp</i></p>
+							</div>
+
+							<div class="col-md-6 col-6">
+								<!-- Input Tanggal Fleksibel -->
+								<p class="mb-0">Medan, <input type="text" class="input-tanggal" placeholder="Tgl / Bln / Tahun"></p>
+								<p class="fw-bold">Petugas Pemeriksa / <i>Inspecting Officer</i></p>
+								<br><br><br><br>
+								<!-- Input Nama Petugas -->
+								<input type="text" class="input-ttd" placeholder="( Ketik Nama Petugas )">
+								<!-- Input NIP Petugas -->
+								<p class="mt-1 mb-0">NIP. <input type="text" class="input-nip" placeholder="Ketik NIP..."></p>
+							</div>
+						</div>
+
+						<!-- Baris Bawah: Atasan (Tengah) -->
+						<div class="row text-center mt-4">
+							<div class="col-12">
+								<p class="mb-0">Menyetujui / <i>Approved by</i>,</p>
+								<p class="fw-bold">Ketua Tim Kerja Pengawasan Faktor Risiko
+								<br>Alat Angkut Dan Barang /  <i>Team Leader</i></p>
+								<br><br><br><br>
+								<span style="font-weight: bold; border-bottom: 1px solid #4b5563; padding-bottom: 2px; display: inline-block;">
+									dr. R. H. Maruli Tua Siahaan, M.K.M
+								</span><br>
+								<span style="font-size: 0.9em; font-weight: bold; padding-top: 2px; display: inline-block;">NIP. 197105272002121003</span>
+							</div>
+					</div>
+					<!-- ========================================== -->
                 </div>
             </div>
 
